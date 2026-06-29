@@ -6,7 +6,7 @@
 /*   By: nfurst <nfurst@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/29 14:45:11 by nfurst            #+#    #+#             */
-/*   Updated: 2026/06/29 15:20:44 by nfurst           ###   ########.fr       */
+/*   Updated: 2026/06/29 15:48:26 by nfurst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_putchar(char c)
 
 void	ft_putnbr(int nb)
 {
-	char c;
+	char	c;
 
 	if (nb == -2147483648)
 	{

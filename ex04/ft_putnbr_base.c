@@ -6,7 +6,7 @@
 /*   By: nfurst <nfurst@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 21:46:46 by nfurst            #+#    #+#             */
-/*   Updated: 2026/06/30 21:46:46 by nfurst           ###   ########.fr       */
+/*   Updated: 2026/07/02 11:21:30 by nfurst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,19 +73,11 @@ void	ft_putnbr_base(int nbr, char *base)
     ft_print_base(nb, base, base_len);
 }
 
-int main(void)
-{
-    ft_putnbr_base(42, "0123456789");
-    write(1, "\n", 1);
-    ft_putnbr_base(-42, "0123456789");
-    write(1, "\n", 1);
-    ft_putnbr_base(42, "01");
-    write(1, "\n", 1);
-    ft_putnbr_base(-42, "01");
-    write(1, "\n", 1);
-    ft_putnbr_base(42, "0123456789ABCDEF");
-    write(1, "\n", 1);
-    ft_putnbr_base(-42, "0123456789ABCDEF");
-    write(1, "\n", 1);
-    return 0;
-}
+// #include <stdlib.h>
+// int main(int argc, char *argv[])
+// {
+// 	if (argc != 3)
+// 		return (1);
+//     ft_putnbr_base(atoi(argv[1]), argv[2]);
+//     return 0;
+// }

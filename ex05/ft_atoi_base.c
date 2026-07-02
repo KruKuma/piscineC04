@@ -6,7 +6,7 @@
 /*   By: nfurst <nfurst@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 21:56:06 by nfurst            #+#    #+#             */
-/*   Updated: 2026/06/30 21:56:06 by nfurst           ###   ########.fr       */
+/*   Updated: 2026/07/02 11:52:04 by nfurst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,11 @@ int	ft_is_space(char c)
 	return (0);
 }
 
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-int	ft_is_valid_base(char *base)
+int	ft_check_base(char *base)
 {
 	int	i;
 	int	j;
 
-	if (ft_strlen(base) < 2)
-		return (0);
 	i = 0;
 	while (base[i] != '\0')
 	{
@@ -50,7 +38,9 @@ int	ft_is_valid_base(char *base)
 		}
 		i++;
 	}
-	return (1);
+	if (i < 2)
+		return (0);
+	return (i);
 }
 
 int	ft_get_base_value(char c, char *base)
@@ -67,6 +57,20 @@ int	ft_get_base_value(char c, char *base)
 	return (-1);
 }
 
+int	ft_get_sign(char *str, int *i)
+{
+	int	sign;
+
+	sign = 1;
+	while (str[*i] == '+' || str[*i] == '-')
+	{
+		if (str[*i] == '-')
+			sign *= -1;
+		(*i)++;
+	}
+	return (sign);
+}
+
 int	ft_atoi_base(char *str, char *base)
 {
 	int	i;
@@ -75,20 +79,15 @@ int	ft_atoi_base(char *str, char *base)
 	int	base_len;
 	int	value;
 
-	if (!ft_is_valid_base(base))
+	base_len = ft_check_base(base);
+	if (base_len == 0)
 		return (0);
 	i = 0;
 	sign = 1;
 	result = 0;
-	base_len = ft_strlen(base);
 	while (ft_is_space(str[i]))
 		i++;
-	while (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
-	}
+	sign = ft_get_sign(str, &i);
 	value = ft_get_base_value(str[i], base);
 	while (value != -1)
 	{
@@ -99,12 +98,11 @@ int	ft_atoi_base(char *str, char *base)
 	return (result * sign);
 }
 
-#include <stdio.h>
-
-int main(void)
-{
-    char *str = "   --+++123";
-    char *base = "0123456789";
-    printf("%d\n", ft_atoi_base(str, base));
-    return (0);
-}
+// #include <stdio.h>
+// int main(void)
+// {
+//     char *str = "   --+++123";
+//     char *base = "0123456789";
+//     printf("%d\n", ft_atoi_base(str, base));
+//     return (0);
+// }
